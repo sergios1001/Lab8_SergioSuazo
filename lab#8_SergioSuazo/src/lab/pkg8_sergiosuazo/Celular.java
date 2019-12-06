@@ -5,6 +5,9 @@
  */
 package lab.pkg8_sergiosuazo;
 
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Sergio
@@ -27,21 +30,596 @@ public class Celular extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jd_AgregarContactos = new javax.swing.JDialog();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        js_numero = new javax.swing.JSpinner();
+        tf_nombre = new javax.swing.JTextField();
+        js_edad = new javax.swing.JSpinner();
+        tf_correo = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ta_direccion = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
+        jd_Contactos = new javax.swing.JDialog();
+        jLabel8 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jl_contactos = new javax.swing.JList<>();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jd_Mensajes = new javax.swing.JDialog();
+        jLabel9 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jt_mensajes = new javax.swing.JTable();
+        jd_NuevoMensaje = new javax.swing.JDialog();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        cb_contactos = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jButton4 = new javax.swing.JButton();
+        jd_Llamar = new javax.swing.JDialog();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        cb_llamar = new javax.swing.JComboBox<>();
+        jButton5 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jd_Registro = new javax.swing.JDialog();
+        jLabel16 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel2.setText("Nuevo Contacto");
+
+        jLabel3.setText("Nombre:");
+
+        jLabel4.setText("Edad:");
+
+        jLabel5.setText("Numero:");
+
+        jLabel6.setText("Correo:");
+
+        jLabel7.setText("Direccion: ");
+
+        js_numero.setModel(new javax.swing.SpinnerNumberModel(10000000, 10000000, 99999999, 1));
+        js_numero.setToolTipText("");
+
+        ta_direccion.setColumns(20);
+        ta_direccion.setRows(5);
+        jScrollPane1.setViewportView(ta_direccion);
+
+        jButton1.setText("Agregar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_AgregarContactosLayout = new javax.swing.GroupLayout(jd_AgregarContactos.getContentPane());
+        jd_AgregarContactos.getContentPane().setLayout(jd_AgregarContactosLayout);
+        jd_AgregarContactosLayout.setHorizontalGroup(
+            jd_AgregarContactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_AgregarContactosLayout.createSequentialGroup()
+                .addGroup(jd_AgregarContactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_AgregarContactosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jd_AgregarContactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_AgregarContactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel2)
+                                .addGroup(jd_AgregarContactosLayout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(js_numero, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jd_AgregarContactosLayout.createSequentialGroup()
+                                    .addGroup(jd_AgregarContactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel6))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jd_AgregarContactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tf_nombre)
+                                        .addGroup(jd_AgregarContactosLayout.createSequentialGroup()
+                                            .addComponent(js_edad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(tf_correo))))
+                            .addGroup(jd_AgregarContactosLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jd_AgregarContactosLayout.createSequentialGroup()
+                        .addGap(144, 144, 144)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+        jd_AgregarContactosLayout.setVerticalGroup(
+            jd_AgregarContactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_AgregarContactosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(28, 28, 28)
+                .addGroup(jd_AgregarContactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(js_numero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_AgregarContactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_AgregarContactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(js_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_AgregarContactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(tf_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_AgregarContactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                .addGap(23, 23, 23))
+        );
+
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel8.setText("Contactos");
+
+        jl_contactos.setToolTipText("");
+        jScrollPane2.setViewportView(jl_contactos);
+
+        jButton2.setText("Modificar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
+        jButton3.setText("Eliminar");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_ContactosLayout = new javax.swing.GroupLayout(jd_Contactos.getContentPane());
+        jd_Contactos.getContentPane().setLayout(jd_ContactosLayout);
+        jd_ContactosLayout.setHorizontalGroup(
+            jd_ContactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_ContactosLayout.createSequentialGroup()
+                .addGroup(jd_ContactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_ContactosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_ContactosLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel8))
+                    .addGroup(jd_ContactosLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jd_ContactosLayout.setVerticalGroup(
+            jd_ContactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_ContactosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(jd_ContactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addGap(47, 47, 47))
+        );
+
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel9.setText("Buzon de Salida");
+
+        jt_mensajes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Receptor", "Mensaje", "Fecha"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jt_mensajes);
+
+        javax.swing.GroupLayout jd_MensajesLayout = new javax.swing.GroupLayout(jd_Mensajes.getContentPane());
+        jd_Mensajes.getContentPane().setLayout(jd_MensajesLayout);
+        jd_MensajesLayout.setHorizontalGroup(
+            jd_MensajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_MensajesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_MensajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 858, Short.MAX_VALUE)
+                    .addGroup(jd_MensajesLayout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jd_MensajesLayout.setVerticalGroup(
+            jd_MensajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_MensajesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel10.setText("Nuevo Mensaje");
+
+        jLabel11.setText("Receptor: ");
+
+        jLabel12.setText("Mensaje:");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane4.setViewportView(jTextArea1);
+
+        jButton4.setText("Enviar");
+
+        javax.swing.GroupLayout jd_NuevoMensajeLayout = new javax.swing.GroupLayout(jd_NuevoMensaje.getContentPane());
+        jd_NuevoMensaje.getContentPane().setLayout(jd_NuevoMensajeLayout);
+        jd_NuevoMensajeLayout.setHorizontalGroup(
+            jd_NuevoMensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_NuevoMensajeLayout.createSequentialGroup()
+                .addGroup(jd_NuevoMensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_NuevoMensajeLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jd_NuevoMensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addGroup(jd_NuevoMensajeLayout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cb_contactos, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel12)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jd_NuevoMensajeLayout.createSequentialGroup()
+                        .addGap(208, 208, 208)
+                        .addComponent(jButton4)))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        jd_NuevoMensajeLayout.setVerticalGroup(
+            jd_NuevoMensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_NuevoMensajeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addGap(26, 26, 26)
+                .addGroup(jd_NuevoMensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(cb_contactos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+
+        jLabel13.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel13.setText("Llamar");
+
+        jLabel14.setText("Contactos: ");
+
+        jButton5.setText("Llamar");
+
+        jLabel15.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel15.setText("00:00");
+
+        jButton6.setText("Colgar");
+
+        javax.swing.GroupLayout jd_LlamarLayout = new javax.swing.GroupLayout(jd_Llamar.getContentPane());
+        jd_Llamar.getContentPane().setLayout(jd_LlamarLayout);
+        jd_LlamarLayout.setHorizontalGroup(
+            jd_LlamarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_LlamarLayout.createSequentialGroup()
+                .addGroup(jd_LlamarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_LlamarLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jd_LlamarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addGroup(jd_LlamarLayout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addGap(18, 18, 18)
+                                .addComponent(cb_llamar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jd_LlamarLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jButton5)
+                        .addGap(72, 72, 72)
+                        .addComponent(jButton6))
+                    .addGroup(jd_LlamarLayout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(69, Short.MAX_VALUE))
+        );
+        jd_LlamarLayout.setVerticalGroup(
+            jd_LlamarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_LlamarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13)
+                .addGap(18, 18, 18)
+                .addGroup(jd_LlamarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(cb_llamar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGroup(jd_LlamarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5)
+                    .addComponent(jButton6))
+                .addGap(31, 31, 31))
+        );
+
+        jLabel16.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel16.setText("Registro");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Receptor", "Duracion", "Fecha"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(jTable1);
+
+        javax.swing.GroupLayout jd_RegistroLayout = new javax.swing.GroupLayout(jd_Registro.getContentPane());
+        jd_Registro.getContentPane().setLayout(jd_RegistroLayout);
+        jd_RegistroLayout.setHorizontalGroup(
+            jd_RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_RegistroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                    .addGroup(jd_RegistroLayout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jd_RegistroLayout.setVerticalGroup(
+            jd_RegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_RegistroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16)
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel1.setText("Bienvenido");
+
+        jMenu1.setText("Contactos");
+
+        jMenuItem2.setText("Agregar Contacto");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Ver Contactos");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Mensajes");
+
+        jMenuItem4.setText("Nuevo Mensaje");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
+
+        jMenuItem5.setText("Buzon");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Llamadas");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem1.setText("Llamar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
+        jMenuItem6.setText("Registro de Llamadas");
+        jMenu3.add(jMenuItem6);
+
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(139, 139, 139)
+                .addComponent(jLabel1)
+                .addContainerGap(158, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jLabel1)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        Dba db = new Dba("./Base de datos.mdb");
+        db.conectar();
+        try {
+            String nombre, correo,direccion;
+            int numero,edad;
+            nombre=tf_nombre.getText();
+            numero=(Integer)js_numero.getValue();
+            correo=tf_correo.getText();
+            edad=(Integer)js_edad.getValue();
+            direccion=ta_direccion.getText();
+            Contactos c = new Contactos(nombre, correo, direccion, edad, numero);
+            db.query.execute("INSERT INTO Contactos"
+                    + " (Nombre,Numero,Correo,Edad,Direccion)"
+                    + " VALUES ('" + nombre + "', '" + numero + "', '" + correo + "', '" + edad + "', '" + direccion + "')");;
+            db.commit();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();   
+        JOptionPane.showMessageDialog(this, "Se agrego el contacto exitosamente");
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        jd_AgregarContactos.setVisible(true);
+        jd_AgregarContactos.pack();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        jd_Contactos.setVisible(true);
+        jd_Contactos.pack();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        jd_NuevoMensaje.setVisible(true);
+        jd_NuevoMensaje.pack();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        jd_Mensajes.setVisible(true);
+        jd_Mensajes.pack();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        jd_Llamar.setVisible(true);
+        jd_Llamar.pack();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+        // TODO add your handling code here:
+        jd_Registro.setVisible(true);
+        jd_Registro.pack();
+    }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        if(jl_contactos.getSelectedIndex()>=0)
+        {
+            String nombre, correo,direccion;
+            int numero,edad,pos;
+            pos=jl_contactos.getSelectedIndex();
+            nombre=JOptionPane.showInputDialog("nombre");
+            numero=Integer.parseInt(JOptionPane.showInputDialog("numero"));
+            edad=Integer.parseInt(JOptionPane.showInputDialog("edad"));
+            correo=JOptionPane.showInputDialog("correo");
+            direccion=JOptionPane.showInputDialog("direccion");
+            Dba db = new Dba("./Base de datos.mdb");
+            db.conectar();
+            try {
+                db.query.execute("update Contactos set Nombre='nombre',Numero='numero',Correo='correo',Direccion='direccion',Edad='edad' where Id='pos'");
+                db.commit();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            db.desconectar();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "No se selecciono ningun contacto");
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        if(jl_contactos.getSelectedIndex()>=0)
+        {
+            int pos=jl_contactos.getSelectedIndex();
+            Dba db = new Dba("./Base de datos.mdb");
+            db.conectar();
+            try {
+                db.query.execute("delete from Contactos where Id='pos'");
+                db.commit();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            db.desconectar();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "No se selecciono ningun contacto");
+        }
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -79,5 +657,59 @@ public class Celular extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cb_contactos;
+    private javax.swing.JComboBox<String> cb_llamar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JDialog jd_AgregarContactos;
+    private javax.swing.JDialog jd_Contactos;
+    private javax.swing.JDialog jd_Llamar;
+    private javax.swing.JDialog jd_Mensajes;
+    private javax.swing.JDialog jd_NuevoMensaje;
+    private javax.swing.JDialog jd_Registro;
+    private javax.swing.JList<String> jl_contactos;
+    private javax.swing.JSpinner js_edad;
+    private javax.swing.JSpinner js_numero;
+    private javax.swing.JTable jt_mensajes;
+    private javax.swing.JTextArea ta_direccion;
+    private javax.swing.JTextField tf_correo;
+    private javax.swing.JTextField tf_nombre;
     // End of variables declaration//GEN-END:variables
 }
