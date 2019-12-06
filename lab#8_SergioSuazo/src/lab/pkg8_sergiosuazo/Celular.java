@@ -6,6 +6,8 @@
 package lab.pkg8_sergiosuazo;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -60,7 +62,7 @@ public class Celular extends javax.swing.JFrame {
         cb_contactos = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        ta_mensaje = new javax.swing.JTextArea();
         jButton4 = new javax.swing.JButton();
         jd_Llamar = new javax.swing.JDialog();
         jLabel13 = new javax.swing.JLabel();
@@ -282,11 +284,16 @@ public class Celular extends javax.swing.JFrame {
 
         jLabel12.setText("Mensaje:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane4.setViewportView(jTextArea1);
+        ta_mensaje.setColumns(20);
+        ta_mensaje.setRows(5);
+        jScrollPane4.setViewportView(ta_mensaje);
 
         jButton4.setText("Enviar");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_NuevoMensajeLayout = new javax.swing.GroupLayout(jd_NuevoMensaje.getContentPane());
         jd_NuevoMensaje.getContentPane().setLayout(jd_NuevoMensajeLayout);
@@ -621,6 +628,36 @@ public class Celular extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3MouseClicked
 
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        String mensaje;
+        mensaje=ta_mensaje.getText();
+        if(mensaje.equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "No se escribio un mensaje");
+        }
+        else
+        {
+            Dba db = new Dba("./base1.mdb");
+            db.conectar();
+            try {
+                String fechaS,receptor;
+                receptor=cb_contactos.getSelectedItem().toString();
+                    Date date=new Date();
+                    SimpleDateFormat fecha= new SimpleDateFormat("dd/MM");
+                    fechaS=fecha.format(date);
+                    db.query.execute("INSERT INTO Mensajes"
+                        + " (Receptor,Mensaje,Fecha)"
+                        + " VALUES ('" + receptor + "', '" + mensaje + "', '" + fechaS + "')");
+                db.commit();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            db.desconectar();
+        }
+            
+    }//GEN-LAST:event_jButton4MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -697,7 +734,6 @@ public class Celular extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JDialog jd_AgregarContactos;
     private javax.swing.JDialog jd_Contactos;
     private javax.swing.JDialog jd_Llamar;
@@ -709,6 +745,7 @@ public class Celular extends javax.swing.JFrame {
     private javax.swing.JSpinner js_numero;
     private javax.swing.JTable jt_mensajes;
     private javax.swing.JTextArea ta_direccion;
+    private javax.swing.JTextArea ta_mensaje;
     private javax.swing.JTextField tf_correo;
     private javax.swing.JTextField tf_nombre;
     // End of variables declaration//GEN-END:variables
