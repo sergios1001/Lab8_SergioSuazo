@@ -7,6 +7,7 @@ package lab.pkg8_sergiosuazo;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -69,7 +70,7 @@ public class Celular extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         cb_llamar = new javax.swing.JComboBox<>();
         jButton5 = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
+        jl_timer = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jd_Registro = new javax.swing.JDialog();
         jLabel16 = new javax.swing.JLabel();
@@ -340,11 +341,21 @@ public class Celular extends javax.swing.JFrame {
         jLabel14.setText("Contactos: ");
 
         jButton5.setText("Llamar");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
 
-        jLabel15.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel15.setText("00:00");
+        jl_timer.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jl_timer.setText("00:00");
 
         jButton6.setText("Colgar");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_LlamarLayout = new javax.swing.GroupLayout(jd_Llamar.getContentPane());
         jd_Llamar.getContentPane().setLayout(jd_LlamarLayout);
@@ -367,7 +378,7 @@ public class Celular extends javax.swing.JFrame {
                         .addComponent(jButton6))
                     .addGroup(jd_LlamarLayout.createSequentialGroup()
                         .addGap(136, 136, 136)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jl_timer, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
         jd_LlamarLayout.setVerticalGroup(
@@ -380,7 +391,7 @@ public class Celular extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addComponent(cb_llamar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jl_timer, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jd_LlamarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
@@ -658,6 +669,25 @@ public class Celular extends javax.swing.JFrame {
             
     }//GEN-LAST:event_jButton4MouseClicked
 
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        h=new Timer(jl_timer);
+        Thread proceso = new Thread(h);
+        proceso.start();
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        h.setVive(false);
+        String hora,persona;
+        persona=cb_llamar.getSelectedItem().toString();
+        hora=jl_timer.getText();
+        duracion.add(hora);
+        fecha.add(new Date());
+        receptor.add(persona);
+        jl_timer.setText("00:00");
+    }//GEN-LAST:event_jButton6MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -708,7 +738,6 @@ public class Celular extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -741,6 +770,7 @@ public class Celular extends javax.swing.JFrame {
     private javax.swing.JDialog jd_NuevoMensaje;
     private javax.swing.JDialog jd_Registro;
     private javax.swing.JList<String> jl_contactos;
+    private javax.swing.JLabel jl_timer;
     private javax.swing.JSpinner js_edad;
     private javax.swing.JSpinner js_numero;
     private javax.swing.JTable jt_mensajes;
@@ -749,4 +779,8 @@ public class Celular extends javax.swing.JFrame {
     private javax.swing.JTextField tf_correo;
     private javax.swing.JTextField tf_nombre;
     // End of variables declaration//GEN-END:variables
+    Timer h;
+    ArrayList duracion=new ArrayList();
+    ArrayList receptor=new ArrayList();
+    ArrayList fecha=new ArrayList();
 }
