@@ -5,10 +5,13 @@
  */
 package lab.pkg8_sergiosuazo;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -184,6 +187,7 @@ public class Celular extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel8.setText("Contactos");
 
+        jl_contactos.setModel(new DefaultListModel());
         jl_contactos.setToolTipText("");
         jScrollPane2.setViewportView(jl_contactos);
 
@@ -282,6 +286,8 @@ public class Celular extends javax.swing.JFrame {
         jLabel10.setText("Nuevo Mensaje");
 
         jLabel11.setText("Receptor: ");
+
+        cb_contactos.setModel(new DefaultComboBoxModel());
 
         jLabel12.setText("Mensaje:");
 
@@ -564,12 +570,44 @@ public class Celular extends javax.swing.JFrame {
         // TODO add your handling code here:
         jd_Contactos.setVisible(true);
         jd_Contactos.pack();
+         Dba db = new Dba("./Base de datos.mdb");
+         db.conectar();
+         DefaultListModel m=(DefaultListModel) jl_contactos.getModel();
+         try {
+         db.query.execute("select Nombre from Contactos");
+         ResultSet rs = db.query.getResultSet();
+         
+         while (rs.next()) {
+             m.addElement(rs.getString(1));
+             
+         }            
+         } catch (SQLException ex) {
+             ex.printStackTrace();
+         }
+         jl_contactos.setModel(m);
+         db.desconectar();
+
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
         jd_NuevoMensaje.setVisible(true);
         jd_NuevoMensaje.pack();
+        Dba db = new Dba("./Base de datos.mdb");
+         db.conectar();
+         DefaultComboBoxModel m=(DefaultComboBoxModel) cb_contactos.getModel();
+         try {
+         db.query.execute("select Nombre from Contactos");
+         ResultSet rs = db.query.getResultSet();
+         
+         while (rs.next()) {
+             m.addElement(rs.getString(1));
+             
+         }            
+         } catch (SQLException ex) {
+             ex.printStackTrace();
+         }
+         cb_contactos.setModel(m);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
@@ -582,6 +620,21 @@ public class Celular extends javax.swing.JFrame {
         // TODO add your handling code here:
         jd_Llamar.setVisible(true);
         jd_Llamar.pack();
+        Dba db = new Dba("./Base de datos.mdb");
+         db.conectar();
+         DefaultComboBoxModel m=(DefaultComboBoxModel) cb_llamar.getModel();
+         try {
+         db.query.execute("select Nombre from Contactos");
+         ResultSet rs = db.query.getResultSet();
+         
+         while (rs.next()) {
+             m.addElement(rs.getString(1));
+             
+         }            
+         } catch (SQLException ex) {
+             ex.printStackTrace();
+         }
+         cb_llamar.setModel(m);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
